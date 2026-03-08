@@ -1,16 +1,15 @@
-// header 요소
+// main.js
 const header = document.getElementById("header");
 
 // 상태 변수
 let lastScroll = 0;
 let isMenuScrolling = false; 
-// let ignoreScroll = false;  <-- 제거
 
 // header 숨김 기준 스크롤
 const scrollThreshold = 150;
 
 // ---------------------------
-// 메뉴 클릭 → smooth scroll + header 숨김
+// 메뉴 클릭 → smooth scroll + header hide/show
 // ---------------------------
 document.querySelectorAll(".menu a").forEach(anchor => {
   anchor.addEventListener("click", function(e) {
@@ -32,14 +31,16 @@ document.querySelectorAll(".menu a").forEach(anchor => {
     const scrollCheck = setInterval(() => {
       const currentPos = window.pageYOffset;
       const targetPos = target.offsetTop;
-      // 거의 도착하면
-      if (Math.abs(currentPos - targetPos) < 2) {
-        clearInterval(scrollCheck);           // 체크 종료
-        header.classList.remove("header-hide"); // 헤더 내려오기
+
+      if (Math.abs(currentPos - targetPos) < 2) { // 거의 도착
+        clearInterval(scrollCheck);
+
+        // 메뉴 클릭 우선 처리: 헤더 내려오기
+        header.classList.remove("header-hide");
         isMenuScrolling = false;
-        lastScroll = window.pageYOffset;      // 마지막 위치 갱신
+        lastScroll = window.pageYOffset; // 마지막 위치 갱신
       }
-    }, 20); // 20ms 간격으로 체크
+    }, 20);
   });
 });
 
@@ -48,19 +49,17 @@ document.querySelectorAll(".menu a").forEach(anchor => {
 // ---------------------------
 window.addEventListener("scroll", () => {
 
-  // ---------------------------
-  // 수정: ignoreScroll 제거, 메뉴 이동 중이면 무시
-  // ---------------------------
+  // 메뉴 클릭에 의한 스크롤 중이면 무시 → 우선순위 확보
   if (isMenuScrolling) return;
 
   let currentScroll = window.pageYOffset;
 
   // 아래로 스크롤
-  if(currentScroll > lastScroll && currentScroll > scrollThreshold){
+  if (currentScroll > lastScroll && currentScroll > scrollThreshold) {
     header.classList.add("header-hide");
   }
   // 위로 스크롤
-  else if(currentScroll < lastScroll){
+  else if (currentScroll < lastScroll) {
     header.classList.remove("header-hide");
   }
 
