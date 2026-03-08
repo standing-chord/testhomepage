@@ -151,19 +151,27 @@ body.loaded .content a{ opacity:0.6; transform:translateY(0); }
 
 
 
-.detail-link{
-    display:block;           /* 가운데 정렬 가능하게 */
-    margin-top:40px;         /* 본문 아래 간격 */
-    
-    color:white;             /* 흰색 글씨 */
-    text-decoration:none;
-    font-size:16px;
-    opacity:0.7;
-    transition:0.3s;
+.detail-link {
+    display: block;
+    margin-top: 40px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+
+    opacity: 0;                 /* 처음엔 안보임 */
+    transform: translateY(40px); /* 아래쪽에서 시작 */
+    transition: transform 1s ease, opacity 0.5s ease; /* 애니메이션 */
 }
 
-.detail-link:hover{
-    opacity:1;
+/* 로딩 후 */
+body.loaded .detail-link {
+    opacity: 0.6;               /* 로딩 후 조금 보이게 */
+    transform: translateY(0);
+}
+
+/* hover 시 */
+.detail-link:hover {
+    opacity: 1;                 /* hover 하면 완전 표시 */
 }
 }
 
