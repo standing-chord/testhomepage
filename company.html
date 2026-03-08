@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>루센라이즈 기업 정보</title>
+
+
+<style>
+    body{
+        margin:0;
+        font-family: Arial, sans-serif;
+    
+        /* 배경 이미지 */ 
+        background-image: url("pictures/background_transparent15.jpg"); 
+        background-size: cover; 
+        background-position: center; 
+        background-repeat: no-repeat; 
+    
+        /* 중앙 정렬 */ 
+        display:flex; 
+        justify-content:center; 
+        align-items:center; 
+        height:100vh; 
+        color:white;
+    }
+    
+    body::before{
+        content:"";
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background:rgba(0,0,0,0.45);
+        z-index:-1;
+    }
+
+    
+    /* 글 영역 */
+    .content{
+        max-width:800px;
+        text-align:center;
+        padding:40px;
+        border-radius:8px;
+    }
+    
+    
+    
+    /* 뒤로가기 버튼*/
+        
+    .back-link{
+        display:block;
+        margin-top:40px;
+        font-size:16px;
+        color:white;
+        text-decoration:none;
+        cursor:pointer;
+        opacity:0.7;
+    }
+    
+    .back-link:hover{
+        opacity:1;
+    }
+</style>
+
+    
+</head>
+
+<body>
+    <div class="content">
+    
+        <h1>기업 정보</h1>
+        <p class = 'spacer'> </p>
+        <p class = 'spacer'> </p>
+        
+        
+        <p>
+            <span style="font-weight: bold; font-size:20px;">대표이사</span><br>
+            이서현
+        </p>
+
+        <p>
+            <span style="font-weight: bold; font-size:20px;">소재지</span><br>
+            서울시 영등포구 선유로 70 우리벤처타운2
+        </p>
+        
+        
+        <a class="back-link" onclick="history.back()">
+            이전 페이지로 돌아가기>
+        </a>
+    
+    </div>
+
+</body>
+</html>
